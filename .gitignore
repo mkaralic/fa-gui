@@ -363,7 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 # Angular cache
-cache/
-.angular/cache/17.3.11/fa-gui/.tsbuildinfo
 /.angular/cache
 /.angular/cache/17.3.11/fa-gui
