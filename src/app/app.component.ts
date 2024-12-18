@@ -49,8 +49,10 @@ export class AppComponent implements OnInit {
   uploadFile(): void {
     if (this.selectedFile) {
       this.faApiService.uploadFile(this.selectedFile).subscribe({
-        next: () => {
-          this.uploadStatus = 'Uploading...';
+        next: (data) => {
+          if (data.status === 'upload_completed') {
+            this.uploadStatus = 'Upload completed successfully!';
+          }
         },
         error: () => {
           this.uploadStatus = 'File upload failed!';
