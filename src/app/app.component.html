@@ -10,6 +10,12 @@
     <div *ngIf="uploadStatus" class="mt-2 text-success">
       {{ uploadStatus }}
     </div>
+    <div *ngIf="zipProgress > 0 && zipProgress < 100" class="mt-2">
+      Zipping Progress: {{ zipProgress }}%
+    </div>
+    <div *ngIf="zipStatus" class="mt-2 text-success">
+      {{ zipStatus }}
+    </div>
   </div>
 
   <table class="table table-bordered">

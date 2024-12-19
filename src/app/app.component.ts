@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FaApiService } from './services/fa-api.service';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,9 @@ export class AppComponent implements OnInit {
   fileList: string[] = [];
   selectedFile: File | null = null;
   uploadProgress: number = 0;
+  zipProgress: number = 0;
   uploadStatus: string = '';
+  zipStatus: string = '';
 
   constructor(private faApiService: FaApiService) { }
 
@@ -34,6 +37,10 @@ export class AppComponent implements OnInit {
         this.getFileList();
       } else if (data.status === 'upload_failed') {
         this.uploadStatus = 'Upload failed!';
+      } else if (data.status === 'zip_progress') {
+        this.zipProgress = data.progress;
+      } else if (data.status === 'zip_completed') {
+        this.zipStatus = 'Zipping completed successfully!';
       }
     });
 
