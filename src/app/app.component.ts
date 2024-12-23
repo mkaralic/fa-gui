@@ -72,4 +72,15 @@ export class AppComponent implements OnInit {
     const url = this.faApiService.downloadFileUrl(fileName);
     window.open(url, '_blank');
   }
+
+  deleteFile(filename: string): void {
+    this.faApiService.deleteFile(filename).subscribe({
+      next: () => {
+        this.getFileList(); // Refresh the file list
+      },
+      error: (err) => {
+        console.error('Error deleting file:', err);
+      }
+    });
+  }
 }

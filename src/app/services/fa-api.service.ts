@@ -61,6 +61,10 @@ export class FaApiService {
     return `http://localhost:5000/download/${fileName}`;
   }
 
+  deleteFile(filename: string): Observable<any> {
+    return this.http.delete(`http://localhost:5000/delete/${filename}`);
+  }
+
   onStatusUpdate(): Observable<any> {
     return this.socket.fromEvent('status');
   }
