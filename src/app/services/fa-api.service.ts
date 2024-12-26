@@ -10,7 +10,7 @@ export class FaApiService {
   constructor(private http: HttpClient, private socket: Socket) { }
 
   getFileList(): Observable<{ files: string[] }> {
-    return this.http.get<{ files: string[] }>('http://localhost:5000/files');
+    return this.http.get<{ files: string[] }>('http://localhost:5000');
   }
 
   uploadFile(file: File): Observable<any> {
@@ -28,7 +28,7 @@ export class FaApiService {
         formData.append('chunkIndex', currentChunk.toString());
         formData.append('totalChunks', totalChunks.toString());
 
-        this.http.post('http://localhost:5000/upload', formData).subscribe({
+        this.http.post('http://localhost:5000', formData).subscribe({
           next: () => {
             currentChunk++;
             const progress = Math.round((currentChunk / totalChunks) * 100);
@@ -62,7 +62,7 @@ export class FaApiService {
   }
 
   deleteFile(filename: string): Observable<any> {
-    return this.http.delete(`http://localhost:5000/delete/${filename}`);
+    return this.http.delete(`http://localhost:5000/${filename}`);
   }
 
   onStatusUpdate(): Observable<any> {
