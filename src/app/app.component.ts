@@ -34,7 +34,6 @@ export class AppComponent implements OnInit {
         this.uploadProgress = data.progress;
       } else if (data.status === 'upload_completed') {
         this.uploadStatus = 'Upload completed successfully!';
-        this.getFileList();
       } else if (data.status === 'upload_failed') {
         this.uploadStatus = 'Upload failed!';
       } else if (data.status === 'zip_progress') {
